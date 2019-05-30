@@ -1,29 +1,24 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider, connect } from 'react-redux'; //Подключаем React-Redux
+import { Provider, connect } from 'react-redux';
 import './App.css';
-import StarWarsSearch from './components/StarWarsSearch';
+import store from "./store";
+import StarWarsHeroes from './components/StarWarsSearch';
 
 //Основной компонент 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <StarWarsSearch/>
+        <StarWarsHeroes/>
       </div>
     );
   }
 };
 
-//Обварачиваем основной компонет в расширение Provider для подключение хранилища 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter >
-      <Switch>
-         <App />
-         <Route path="/" exact component={MainComponent}></Route> {/*exact - значит при загрузке страницы сразу отрисуем данный компонент  */}
-      </Switch>
-    </BrowserRouter>
+    <App />
   </Provider>,
   document.getElementById('root')
 );
