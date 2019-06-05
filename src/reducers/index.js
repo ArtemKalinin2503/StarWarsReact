@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 export const initState = {
 	id: 0,
-	heroes: '', //В данное состояние преходят все основные данные с api
+	heroes: [], //В данное состояние преходят все основные данные с api
 	description: '',
 	gender: '',
 	search: '',
