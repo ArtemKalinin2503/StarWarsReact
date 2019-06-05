@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import store from './store';
 import StarWarsHome from './components/StarWarsHome';
-import StarWarsHeroesPage from './components/StarWarsHeroesPage';
+import StarWarsPage from './components/StarWarsHeroesPage';
 
 //Основной компонент
 class App extends Component {
@@ -15,7 +15,8 @@ class App extends Component {
 				<div className="App">
 					<Switch>
 						<Route path="/" component={StarWarsHome} exact />
-						<Route path="/starwarsHeroesPage" component={StarWarsHeroesPage} />
+						<Route path="/starwarsHeroesPage" component={StarWarsPage} exact />
+						<Route path="/starwarsHeroesPage/:id" component={StarWarsPage} /> {/*Подставим id в url*/}
 					</Switch>
 				</div>
 			</Router>

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Provider, connect } from 'react-redux';
 import store from '../store';
 import StarWarsSearch from './StarWarsSearch';
-import StarWarsPreview from './StarWarsPreview';
+import StarWarsPrew from './StarWarsPreview';
 import { actionGetHeroes } from '../action';
+//Компонент который выводит компонент StarWarsSearch и StarWarsPrew
 class StarWarsHome extends Component {
 	componentDidMount() {
 		store.dispatch(actionGetHeroes()); //Получаем данные в state heroes
@@ -13,9 +14,8 @@ class StarWarsHome extends Component {
 		//Если загрузка данных закончена
 		if (this.props.isFetching) {
 			var listHeroes = this.props.heroes.results.map((item, index) => {
-				return <StarWarsPreview key={index} name={item.name} />;
+				return <StarWarsPrew key={index} name={item.name} id={index} />;
 			});
-			console.log(this.props.heroes);
 		} else {
 			return (
 				<div className="starWars__preloader">
