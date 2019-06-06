@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { Provider, connect } from 'react-redux';
+import store from '../store';
+import { actionGetValueSearch } from '../action';
 //Компонент с полем поиска героев
 class StarWarsSearch extends Component {
+	handleChangeSearch = (event) => {
+		let searchValue = event.target.value;
+		store.dispatch(actionGetValueSearch(searchValue));
+	};
+
 	render() {
 		return (
 			<div className="starWarsSearch__wrapper">
@@ -17,4 +25,12 @@ class StarWarsSearch extends Component {
 	}
 }
 
-export default StarWarsSearch;
+const mapStateToProps = (state, ownProps = {}) => ({
+	search_value: state.mainReducer.search_value
+});
+
+const mapDispatchToProps = {};
+
+const StarWarsFilter = connect(mapStateToProps, mapDispatchToProps)(StarWarsSearch);
+
+export default StarWarsFilter;

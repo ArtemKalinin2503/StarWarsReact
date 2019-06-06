@@ -5,7 +5,7 @@ export const initState = {
 	id_select: 0, //В данное состояние приходит id только выбранного героя
 	heroes: [], //В данное состояние преходят все основные данные с api
 	heroes_select: {}, //Данное состояние преходят данные только для выбранного героя
-	search: '',
+	search_value: '',
 	isFetching: false, //Данное состояние служит флагом о начале и окончании загрузки (необходимо для устранения асинхронности получения данных)
 	error: ''
 };
@@ -44,12 +44,17 @@ const mainReducer = (state = initState, action) => {
 				isFetching: action.payload
 			};
 		//Данный action передаст в состояние id_select значение id выбранного героя
-		case 'GER_ID_SELECT_HEROES':
+		case 'GET_ID_SELECT_HEROES':
 			return {
 				...state,
 				id_select: action.payload
 			};
-
+		//Данный action получает value из поля поиска
+		case 'GET_VALUE_INPUT_SEARCH':
+			return {
+				...state,
+				search_value: action.payload
+			};
 		default:
 			return state;
 	}
