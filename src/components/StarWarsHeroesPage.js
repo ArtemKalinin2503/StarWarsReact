@@ -10,7 +10,6 @@ class StarWarsHeroesPage extends Component {
 
 	render() {
 		if (this.props.isFetching) {
-			console.log(this.props.heroes_select);
 			var heroesName = this.props.heroes_select.name;
       var heroesHeight = this.props.heroes_select.height;
       var heroesMass = this.props.heroes_select.mass;

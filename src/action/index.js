@@ -33,4 +33,7 @@ export const actionGetIdSelectHeroes = (id) => {
 export const actionGetValueSearch = (value) => {
 	return { type: 'GET_VALUE_INPUT_SEARCH', payload: value };
 };
-
+//Action  фильтрует массив с героями
+export const actionFilterHeroes = (arr) => {
+  return { type: 'FILTER_HEROES_LIST', payload: arr };
+};

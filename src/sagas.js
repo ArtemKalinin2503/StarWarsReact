@@ -10,7 +10,7 @@ import axios from 'axios';
 
 export default function* rootWatcher() {
 	yield takeLatest('GET_HEROES_REQUEST', getHeroesWalker); //Вызов saga getHeroesWalker при вызове action GET_HEROES_REQUEST
-	yield takeLatest('GET_HEROES_SELECT_REQUEST', getHeroesSelectWalker);
+  yield takeLatest('GET_HEROES_SELECT_REQUEST', getHeroesSelectWalker);
 }
 
 //Данная saga получит данные с api https://swapi.co
@@ -37,3 +37,4 @@ function* getHeroesSelectWalker(action) {
 		yield put(actionStatusSelectHeroes(true)); //Данный  action actionStatusHeroes переведет состояние isFetching в true (данное состояние служит флагом что загрузка  данных завершена)
 	}
 }
+

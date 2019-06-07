@@ -5,7 +5,8 @@ export const initState = {
 	id_select: 0, //В данное состояние приходит id только выбранного героя
 	heroes: [], //В данное состояние преходят все основные данные с api
 	heroes_select: {}, //Данное состояние преходят данные только для выбранного героя
-	search_value: '',
+  search_value: '',
+  filter_heroes: '',
 	isFetching: false, //Данное состояние служит флагом о начале и окончании загрузки (необходимо для устранения асинхронности получения данных)
 	error: ''
 };
@@ -54,7 +55,15 @@ const mainReducer = (state = initState, action) => {
 			return {
 				...state,
 				search_value: action.payload
-			};
+      };
+    //Данный action фильрует массив героев  
+    case 'FILTER_HEROES_LIST':
+      let arrHeroes = state.heroes.results;
+      let arrFilterHeroes = arrHeroes.filter(heroes => heroes.name.toLowerCase().includes(action.payload.toLowerCase())) //heroes в методе filter возвращает массив heroes
+      return {
+        ...state,
+        filter_heroes: [...arrFilterHeroes]
+      };  
 		default:
 			return state;
 	}

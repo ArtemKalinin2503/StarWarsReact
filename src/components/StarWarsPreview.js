@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Provider, connect } from 'react-redux';
-import store from '../store';
 import { actionGetIdSelectHeroes } from '../action';
+import store from '../store';
 //Компонент который выводит ссылки на героев
 class StarWarsPrew extends Component {
 	//Собитие клика по ссылке
