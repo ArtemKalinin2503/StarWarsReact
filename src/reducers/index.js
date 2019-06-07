@@ -8,7 +8,8 @@ export const initState = {
   search_value: '',
   filter_heroes: '',
 	isFetching: false, //Данное состояние служит флагом о начале и окончании загрузки (необходимо для устранения асинхронности получения данных)
-	error: ''
+  error: '',
+  state_flag: false //Данное состояние нужно чтобы в компоненте StarWarsHeroesPage - работа с данными происходила корректно (так isFetching возвращает true при первой загрузке компонента StarWarsHome)
 };
 
 const mainReducer = (state = initState, action) => {
@@ -43,7 +44,12 @@ const mainReducer = (state = initState, action) => {
 			return {
 				...state,
 				isFetching: action.payload
-			};
+      };
+    case 'GET_HEROES_FILTER_FAILED':
+      return {
+        isFetching: false,
+        error: action.payload
+      };
 		//Данный action передаст в состояние id_select значение id выбранного героя
 		case 'GET_ID_SELECT_HEROES':
 			return {
@@ -63,7 +69,13 @@ const mainReducer = (state = initState, action) => {
       return {
         ...state,
         filter_heroes: [...arrFilterHeroes]
-      };  
+      }; 
+    //Action который выступает дополнительным флагом загрузки для предотвращения асинхронности
+    case 'ACTION_FLAG':
+      return {
+        ...state,
+        state_flag: true
+      };
 		default:
 			return state;
 	}

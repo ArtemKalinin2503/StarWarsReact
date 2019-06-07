@@ -7,23 +7,24 @@ import { actionGetHeroes } from '../action';
 //Компонент который выводит компонент StarWarsSearch и StarWarsPrew
 class StarWarsHome extends Component {
 	componentDidMount() {
-		store.dispatch(actionGetHeroes()); //Получаем данные в state heroes
+    store.dispatch(actionGetHeroes()); //Получаем данные в state heroes
 	}
 
 	render() {
 		//Если загрузка данных закончена
 		if (this.props.isFetching) {
+      console.log(this.props.heroes)
       //Реализация без action
 			// var listHeroes = this.props.heroes.results.filter(test => test.name.toLowerCase().includes(this.props.search_value)).map((item, index) => {
 			//   return <StarWarsPrew key={index} name={item.name} id={index} />;
 			// });
 			if (!this.props.search_value) {
 				var listHeroes = this.props.heroes.results.map((item, index) => {
-					return <StarWarsPrew key={index} name={item.name} id={index} />;
+					return <StarWarsPrew key={index} name={item.name} id={item.name} />;
 				});
 			} else {
 				var listHeroes = this.props.filter_heroes.map((item, index) => {
-					return <StarWarsPrew key={index} name={item.name} id={index} />;
+					return <StarWarsPrew key={index} name={item.name} id={item.name} />;
 				});
 			}
 		}

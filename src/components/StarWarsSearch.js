@@ -8,7 +8,6 @@ class StarWarsSearch extends Component {
 		let searchValue = event.target.value;
 		store.dispatch(actionGetValueSearch(searchValue.trim()));
     store.dispatch(actionFilterHeroes(this.props.search_value));  
-    console.log()
 	};
 
 	render() {

@@ -4,7 +4,8 @@ import {
 	actionStatusHeroes,
 	actionHeroesError,
 	actionSuccessSelectHeroes,
-	actionStatusSelectHeroes
+  actionStatusSelectHeroes,
+  actionHeroesFilterError
 } from './action';
 import axios from 'axios';
 
@@ -17,7 +18,7 @@ export default function* rootWatcher() {
 function* getHeroesWalker() {
 	yield put(actionStatusHeroes(false));
 	//yield delay(3000); //Задержим загрузку данных для preloader
-	const response = yield call(axios.get, 'https://swapi.co/api/people/'); //С помощью axios выполним  get запрос к указанному api
+  const response = yield call(axios.get, 'https://swapi.co/api/people/?search='); //С помощью axios выполним  get запрос к указанному api
 	if (response.status === 200) {
 		yield put(actionSuccessHeroes(response.data)); //Положим полученные данные в state heroes с помощью action actionSuccessHeroes
 		yield put(actionStatusHeroes(true)); //Данный  action actionStatusHeroes переведет состояние isFetching в true (данное состояние служит флагом что загрузка  данных завершена)
@@ -31,10 +32,12 @@ function* getHeroesWalker() {
 function* getHeroesSelectWalker(action) {
 	yield put(actionStatusSelectHeroes(false));
 	//yield delay(3000); //Задержим загрузку данных для preloader
-	const response = yield call(axios.get, `https://swapi.co/api/people/${action.payload}`); //С помощью axios выполним  get запрос к указанному api
+  const response = yield call(axios.get, `https://swapi.co/api/people/?search=${action.payload}`); //С помощью axios выполним  get запрос к указанному api
 	if (response.status === 200) {
 		yield put(actionSuccessSelectHeroes(response.data)); //Положим полученные данные в state heroes с помощью action actionSuccessHeroes
 		yield put(actionStatusSelectHeroes(true)); //Данный  action actionStatusHeroes переведет состояние isFetching в true (данное состояние служит флагом что загрузка  данных завершена)
-	}
+  } else {
+    yield put(actionHeroesFilterError('Error!'));
+  }
 }
 

@@ -37,3 +37,10 @@ export const actionGetValueSearch = (value) => {
 export const actionFilterHeroes = (arr) => {
   return { type: 'FILTER_HEROES_LIST', payload: arr };
 };
+export const actionHeroesFilterError = (erorr) => {
+  return { type: 'GET_HEROES_FILTER_FAILED', payload: erorr };
+};
+//Action который выступает дополнительным флагом загрузки для предотвращения асинхронности
+export const actionFilterFlag = (value) => {
+  return { type: 'ACTION_FLAG', payload: value };
+};
