@@ -41,3 +41,8 @@ Api: https://swapi.co/
 			
       return <StarWarsPrew key={index} name={item.name} id={index} />;
 	});
+
+- Запуск проекта:
+npm install
+npm start 	
+	
