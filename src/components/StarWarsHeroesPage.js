@@ -10,21 +10,28 @@ class StarWarsHeroesPage extends Component {
 	}
 
 	render() {
-    //Проверка если данные загружены (дополнительный state_flag - нужен чтобы убрать асинхронность)
+		//Проверка если данные загружены (дополнительный state_flag - нужен чтобы убрать асинхронность)
 		if (this.props.isFetching && this.props.state_flag) {
 			var heroesDescription = this.props.heroes_select.results.map((item) => {
 				return (
-					<ul>
-						<li>Имя: {item.name}</li>
-						<li>Рост: {item.height}см</li>
-						<li>Вес: {item.mass}кг</li>
-						<li>Цвет глаз: {item.eye_color}</li>
-					</ul>
+          <div>
+            <h1 className="starWarsPage__title">The Star Wars</h1>
+            <ul className="starWars__description-list">
+              <li>Имя: {item.name}</li>
+              <li>Рост: {item.height}см</li>
+              <li>Вес: {item.mass}кг</li>
+              <li>Цвет глаз: {item.eye_color}</li>
+            </ul>
+          </div>
 				);
 			});
 		}
-
-		return <div className="starWarsPage__description">{heroesDescription}</div>;
+		return (
+      <div className={this.props.isFetching ? 'starWars_wrapper' : 'starWars_wrapper preloader'}>
+        <div class="lds-hourglass"></div>
+				<div className="starWarsPage__description">{heroesDescription}</div>
+			</div>
+		);
 	}
 }
 

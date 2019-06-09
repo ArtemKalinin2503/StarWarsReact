@@ -1,3 +1,102 @@
-#ex1Slider .slider-selection {
-	background: #BABABA;
+body {
+	background: #272b2f;
+}
+
+.App {
+	max-width: 1200px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.starWars_wrapper {
+	width: 100%;
+}
+
+.starWarsPage__title {
+  color: #ffe300;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.starWarchHeroes__input {
+	background: none;
+	border: none;
+	outline: none;
+	color: #c8c8c8;
+	border-bottom: 3px solid white;
+	margin-bottom: 20px;
+  width: 100%;
+  font-size: 24px;
+  padding-bottom: 8px;
+}
+
+.starWarsHeroes__list, .starWars__description-list {
+	list-style: none;
+  padding: 0;
+  font-size: 20px;
+  line-height: 36px;
+}
+
+.starWarsHeroes__link {
+	color: #c8c8c8;
+  text-decoration: node;
+  font-size: 20px;
+}
+
+.starWarsHeroes__link:hover {
+	color: #ffe300;
+	text-decoration: none;
+}
+
+.starWarsPage__description {
+	color: #c8c8c8;
+}
+
+/*Style Preloader*/
+.preloader .starWarsPage__main {
+	display: none;
+}
+
+.preloader .starWarsPage__description {
+	display: none;
+}
+
+/*Preloader animation*/
+.preloader .lds-hourglass {
+  display: inline-block;
+}
+.lds-hourglass {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 6px;
+  box-sizing: border-box;
+  border: 26px solid #ffe300;
+  border-color: #ffe300 transparent #ffe300 transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
 }
