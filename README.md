@@ -22,8 +22,11 @@ Api: https://swapi.co/
 - Логика фильтра массива написана в reducer при описании action: 
   
   case 'FILTER_HEROES_LIST':
+      
       let arrHeroes = state.heroes.results;
+      
       let arrFilterHeroes = arrHeroes.filter(heroes => heroes.name.toLowerCase().includes(action.payload.toLowerCase())) 
+      
       return {
         ...state,
         filter_heroes: [...arrFilterHeroes]
