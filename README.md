@@ -43,6 +43,8 @@ Api: https://swapi.co/
 	});
 
 - Запуск проекта:
+
 npm install
+
 npm start 	
 	
