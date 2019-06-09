@@ -20,6 +20,7 @@ Api: https://swapi.co/
 - getHeroesSelectWalker - фильтрует данные путем подставления в url (action actionFilterHeroes подставляет данные из поля поиска)
 - Отфильтрованный массив попадает в state filter_heroes
 - Логика фильтра массива написана в reducer при описании action: 
+  
   case 'FILTER_HEROES_LIST':
       let arrHeroes = state.heroes.results;
       let arrFilterHeroes = arrHeroes.filter(heroes => heroes.name.toLowerCase().includes(action.payload.toLowerCase())) 
