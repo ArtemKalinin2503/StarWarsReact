@@ -39,5 +39,5 @@ Api: https://swapi.co/
 
 	test.name.toLowerCase().includes(this.props.search_value)).map((item, index) => {
 			
-      	return <StarWarsPrew key={index} name={item.name} id={index} />;
+      return <StarWarsPrew key={index} name={item.name} id={index} />;
 	});
