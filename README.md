@@ -31,4 +31,12 @@ Api: https://swapi.co/
         ...state,
         filter_heroes: [...arrFilterHeroes]
       }; 
+      
+- Также есть закомментированное решение фильтрации:      
 
+var listHeroes = this.props.heroes.results.filter(test => 
+
+test.name.toLowerCase().includes(this.props.search_value)).map((item, index) => {
+			
+      return <StarWarsPrew key={index} name={item.name} id={index} />;
+});
